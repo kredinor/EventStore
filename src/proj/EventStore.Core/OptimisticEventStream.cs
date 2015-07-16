@@ -78,6 +78,8 @@ namespace EventStore
 					continue;
 				}
 
+                ((dynamic) @event.Body).MessageTimeStamp = commit.CommitStamp;
+
 				this.committed.Add(@event);
 				this.StreamRevision = currentRevision - 1;
 			}
